@@ -41,7 +41,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-4 md:p-6">
-      <div className="max-w-full px-4 md:px-6 mx-auto">
+      <div className="max-w-7xl w-full px-4 md:px-6 mx-auto">
         {/* 页面标题 */}
         <div className="text-center mb-12 pt-8 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mb-4 animate-sea-wave">🐢 AI海龟汤</h1>
@@ -68,10 +68,10 @@ const Home: React.FC = () => {
         )}
 
         {/* 故事卡片网格 */}
-        <div className="grid grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-12">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-12">
           {stories.slice(0, displayCount).map((story, index) => (
             <div key={story.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col h-full">
+              <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col h-full min-w-0">
                 {/* 标题和难度 */}
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-bold text-slate-100 flex-1 mr-3 transition-all duration-300 hover:text-amber-400">{story.title}</h3>

@@ -601,3 +601,6 @@
 提示：丈夫的早餐习惯与他的健康状况有关。
 [2026/4/2 22:31:47] 响应发送成功
 [2026/4/2 22:31:47] ========================================
+[2026/4/2 22:47:55] Server is running on port 3001
+[2026/4/2 22:47:55] Server is listening on http://localhost:3001
+[2026/4/2 22:47:55] Server is accessible on LAN at http://[your-local-ip]:3001

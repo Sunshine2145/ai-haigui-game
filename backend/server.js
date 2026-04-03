@@ -344,9 +344,10 @@ const PORT = process.env.PORT || 3001;
 
 // 启动服务器
 try {
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     log(`Server is running on port ${PORT}`);
     log(`Server is listening on http://localhost:${PORT}`);
+    log(`Server is accessible on LAN at http://[your-local-ip]:${PORT}`);
   });
 } catch (error) {
   console.error('Error starting server:', error);
