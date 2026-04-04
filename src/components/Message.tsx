@@ -36,7 +36,7 @@ const Message: React.FC<MessageProps> = ({ message }) => {
 
         {/* 消息内容 */}
         <div className={`p-3 rounded-lg ${isUser ? 'bg-blue-500 text-white' : isError ? 'bg-red-900/30 border border-red-800 text-slate-300' : 'bg-slate-700 text-slate-200'}`}>
-          <p>{message.content}</p>
+          <div dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br>') }} />
         </div>
       </div>
     </div>

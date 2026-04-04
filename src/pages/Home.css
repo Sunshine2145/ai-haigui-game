@@ -185,15 +185,46 @@
   font-size: 12px;
 }
 
-/* 响应式布局 */
+/* 响应式布局 - 4级断点 */
+/* 手机等小屏幕 (<640px): 1列 */
+.home-card-item {
+  width: 100%;
+}
+
+/* 平板等中等屏幕 (≥640px): 2列 */
 @media (min-width: 640px) {
   .home-card-item {
     width: 50%;
   }
+  
+  .home-container {
+    padding: 16px 24px;
+  }
 }
 
+/* 小笔记本等大屏幕 (≥768px): 3列 */
+@media (min-width: 768px) {
+  .home-card-item {
+    width: 33.333333%;
+  }
+  
+  .home-container {
+    padding: 24px;
+  }
+}
+
+/* 桌面等超大屏幕 (≥1024px): 4列 */
 @media (min-width: 1024px) {
   .home-card-item {
     width: 25%;
+  }
+  
+  .home-card-grid {
+    margin: 0 -16px;
+  }
+  
+  .home-card-item {
+    padding: 0 16px;
+    margin-bottom: 32px;
   }
 }
