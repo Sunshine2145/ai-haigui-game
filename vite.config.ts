@@ -11,7 +11,7 @@ export default defineConfig({
     proxy: {
       // 将所有以/api开头的请求代理到后端服务
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: (path) => path,
         headers: {
