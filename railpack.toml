@@ -1,12 +1,1 @@
 [deploy]
-startCommand = """
-caddy run --config /dev/stdin --adapter caddyfile <<'EOF'
-:{$PORT:3000} {
-    root * /app/dist
-    file_server
-    try_files {path} /index.html
-    encode gzip
-    header /assets/* Cache-Control "public, max-age=31536000, immutable"
-}
-EOF
-"""
