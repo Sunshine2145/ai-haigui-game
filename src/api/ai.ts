@@ -5,8 +5,24 @@ import { Story } from '../stories';
  * 用于调用后端API进行海龟汤游戏的问答和故事生成
  */
 
-// 固定后端接口地址（使用相对路径，通过Vite代理访问）
-const BACKEND_API_URL = '/api/chat';
+// 后端接口基础地址，通过环境变量配置，默认使用相对路径（开发环境）
+const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_API_BASE_URL || '';
+
+// 构建完整的API URL
+const buildApiUrl = (path: string): string => {
+  // 如果基础URL为空，则使用相对路径（适用于开发环境代理）
+  if (!BACKEND_BASE_URL) {
+    return path;
+  }
+  // 确保基础URL不以斜杠结尾，路径以斜杠开头
+  const base = BACKEND_BASE_URL.replace(/\/$/, '');
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+};
+
+// API端点路径
+const CHAT_API_PATH = '/api/chat';
+const GENERATE_STORY_API_PATH = '/api/generate-story';
 
 /**
  * 向AI提问
@@ -21,7 +37,7 @@ export const askAI = async (question: string, story: Story): Promise<string> => 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 35000); // 后端有30秒超时，这里设置35秒
 
-    const response = await fetch(BACKEND_API_URL, {
+    const response = await fetch(buildApiUrl(CHAT_API_PATH), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -85,8 +101,8 @@ export const generateStory = async (): Promise<Story> => {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 35000); // 后端有30秒超时，这里设置35秒
 
-    // 调用后端接口生成故事（使用相对路径，通过Vite代理访问）
-    const response = await fetch('/api/generate-story', {
+    // 调用后端接口生成故事
+    const response = await fetch(buildApiUrl(GENERATE_STORY_API_PATH), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
